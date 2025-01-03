@@ -11,5 +11,13 @@
 // import * as os from "./os.js";
 import * as server from "./server.js";
 // import * as xhr from "./api.url.js"
-import * as xhr from "./class.js"
+// import * as xhr from "./class.js"
+// import * as xhr from "./class.js"
+
+import * as demo from "./demo.mjs";
+import {createRequire} from "module";
+const require= createRequire(import.meta.url);
+const cjs= require('./demo.cjs')
+import mjs from "./demo.mjs";
+
 
