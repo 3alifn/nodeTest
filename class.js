@@ -63,3 +63,34 @@ async function classWorker(){
 }
 classWorker()
 
+
+
+class Parents {
+    #password= '123'
+    email= '123@mail.com';
+    static x (){
+        return "HI, What's up?"
+    }
+    getName(){
+        return `your parent email is ${this.email} $ password is ${this.#password}`
+    } 
+}
+
+class Childs extends Parents {
+    constructor(name){
+        super()
+    this.pname= name;
+    }
+
+    getParent(){
+        console.log(super.getName());
+        
+
+        return `your parent email is ${this.pname}`
+    }
+
+}
+
+const child= new Childs('X')
+
+console.log(child.getParent());

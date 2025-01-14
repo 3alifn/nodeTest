@@ -15,11 +15,11 @@ const mysqSlqSession= MySQLStore(session)
 const app= express();
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
-import redis from "redis";
 app.use(cookieParser())
 app.use(express.json())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(express.static('./public'))
+
 export const sqlmap= mysql.createPool({
     host: "localhost",
     user: 'root',
@@ -45,21 +45,7 @@ app.use(session({
         }
 }))
 
-// http.createServer((req, res)=>{
-//     // res.write('<center><h1>Hello World</h1></center>');
-//     fs.readFile('./index.html', 'utf-8', (err, html)=>{
-//         res.end(html)
-//     })
-// }).listen(3000, ()=>{
-//     console.log('server ruuning on http://localhost:3000');
-    
-// }) // ruuning on port 3000
 
-app.use('*', (req, res, next)=>{
-    // console.log('middleware router checked...');
-    
-    next()
-}) // next middleware func
 
 
 app.use('/admin', admin_router)
@@ -68,6 +54,22 @@ app.get('/', (req, res)=>{
 res.sendFile(path.join(path.resolve(), 'index.html'));
 })
 
+app.get('/test', (req, res)=>{
+    async function output(){
+   
+        function input(param){
+            return new Promise((resolve, reject)=>{
+                resolve(param)
+            })
+        }
+    
+        const log= await input('Hello World')
+          res.end(log)
+        
+    }
+    
+    output()
+})
 
 app.use((err, req, res, next)=>{
    console.log(err);
@@ -79,7 +81,20 @@ app.use((req, res, next)=>{
     res.send('404: Not found page')
 })
 
-app.listen(30, ()=>{
-    console.log('server ruuning on http://localhost:30');
+const PORT= process.env.PORT || 3001
+app.listen(PORT, ()=>{
+    console.log('server is running port '+PORT);
     
 })
+
+
+
+// http.createServer((req, res)=>{
+//     // res.write('<center><h1>Hello World</h1></center>');
+//     fs.readFile('./index.html', 'utf-8', (err, html)=>{
+//         res.end(html)
+//     })
+// }).listen(3001, ()=>{
+//     console.log('server ruuning on http://localhost:3001');
+    
+// }) // ruuning on port 3001
