@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../../dist/output.css">
+
+</head>
+
+<body class="dark:bg-gray-800" onload="darkMode()">
+
+</center>
+ <center>
+    <h1  class="text-3xl my-2 p-3 text-black bg-white  dark:bg-gray-700 dark:text-white font-bold underline">
+        Hello world!
+        
+      </h1>
+      <button id="darkModeBtn" onclick="darkModeToggle()" class="border hover:scale-105 bg-transparent dark:bg-red-500/30 text-black dark:text-white  px-2 rounded-lg">dark</button>
+ </center>
+
+
+ <center>
+  <h1><button class="btn">my button</button></h1>
+ </center>
+
+
+<!-- <div class="app p-5 items-center rounded-lg shadow-2xl shadow-white pt-5 h-200 mb-5 w-10/12 mt-3 m-auto flex justify-evenly bg-green-600 gap-3">
+  <img class="w-6/12 md:self-start h-1/6 md:h-2/6 shadow-2xl shadow-slate-900 rounded-e-full border-lime-700 border-3" src="../public/images/e.png" alt="">
+  <img class="w-6/12 md:self-end h-1/6 md:h-2/6 shadow-2xl shadow-slate-900 rounded-s-full border-lime-700 border-3" src="../public/images/a.png" alt="">
+</div> -->
+
+
+<!-- 
+<div id="grid" class="parent h-[300px] p-3 border-3 m-1 border-green-600
+ grid grid-flow-dense grid-rows-3 grid-cols-3 gap-2">
+
+  <div class="child p-5 delay-100 duration-600 transition hover:animate-pulse hover:bg-red-700 rounded-xl shadow-sm shadow-black text-center font-bold bg-lime-600">grid 1</div>
+  <div class="child p-5 delay-100 hover:scale-105 duration-600 transition hover:bg-red-600 rounded-xl shadow-sm shadow-black text-center font-bold bg-lime-600">grid 2</div>
+  <div class="child p-5 rounded-xl shadow-sm shadow-black text-center font-bold bg-lime-600">grid 3</div>
+  <div class="child p-5 rounded-xl shadow-sm shadow-black text-center font-bold bg-lime-600">grid 4</div>
+
+
+  <div class="child p-5 rounded-xl shadow-sm shadow-black text-center font-bold bg-lime-600">grid 7</div>
+  <div class="child p-5 rounded-xl shadow-sm shadow-black text-center font-bold bg-lime-600">grid 8</div>
+  <div class="child p-5 rounded-xl shadow-sm shadow-black text-center font-bold bg-lime-600">grid 9</div>
+  <div class="child max-w-96 p-5 rounded-xl shadow-sm shadow-black text-center font-bold bg-lime-600">grid 9</div>
+
+</div> -->
+
+
+
+
+<!-- <div id="row" class="parent h-[300px] p-3 
+   border-3 m-1
+ border-red-600 flex-wrap justify-center items-center flex flex-row gap-3">
+
+  <div class="child p-5 h-16 rounded-xl shadow-sm shadow-black w-3/12  text-center font-bold bg-lime-600">row 1</div>
+  <div class="child p-5 h-16 rounded-xl shadow-sm shadow-black w-3/12  text-center font-bold bg-lime-600">row 2</div>
+  <div class="child p-5 h-16 rounded-xl shadow-sm shadow-black w-3/12  text-center font-bold bg-lime-600">row 3</div>
+  <div class="child p-5 h-16 rounded-xl shadow-sm shadow-black w-3/12  text-center font-bold bg-lime-600">row 4</div>
+  <div class="child p-5 h-16 rounded-xl shadow-sm shadow-black w-3/12  text-center font-bold bg-lime-600">row 5</div>
+  <div class="child p-5 h-16 rounded-xl shadow-sm shadow-black w-3/12  text-center font-bold bg-lime-600">row 6</div>
+  <div class="child p-5 h-16 basis-6/12 rounded-xl shadow-sm shadow-black w-3/12  text-center font-bold bg-lime-600">row 7</div>
+
+</div> -->
+
+<!-- 
+<div id="col" class="parent h-[300px] p-3 
+   border-3 m-1
+ border-blue-600 flex-wrap justify-center items-center flex flex-col gap-3">
+
+  <div class="child p-5 h-16 rounded-xl shadow-sm shadow-black w-3/12  text-center font-bold bg-lime-600">column 1</div>
+  <div class="child p-5 h-16 rounded-xl shadow-sm shadow-black w-3/12  text-center font-bold bg-lime-600">column 2</div>
+  <div class="child p-5 h-16 rounded-xl shadow-sm shadow-black w-3/12  text-center font-bold bg-lime-600">column 3</div>
+  <div class="child p-5 h-16 rounded-xl shadow-sm shadow-black w-3/12  text-center font-bold bg-lime-600">column 4</div>
+  <div class="child min-w-36 max-w-48 p-5 basis-6/12 h-16 rounded-xl shadow-sm shadow-black w-3/12  text-center font-bold bg-lime-600">column 5</div>
+
+</div> -->
+
+<script>
+
+  function darkMode(){
+    const colorPlate= localStorage.getItem('theme');
+    if(colorPlate=='dark'){
+    document.getElementById('darkModeBtn').innerText='Dark mode off';
+      document.documentElement.classList.add('dark')
+
+    
+    } else {
+    document.getElementById('darkModeBtn').innerText='Dark mode on'
+      document.documentElement.classList.remove('dark')
+
+    }
+     
+  }
+
+  function darkModeToggle(){
+   const colorPlate= localStorage.getItem('theme');
+   if(colorPlate=='dark'){
+    localStorage.removeItem('theme');
+    localStorage.setItem('theme', 'light');
+   } else {
+    localStorage.removeItem('theme');
+    localStorage.setItem('theme', 'dark');
+   }
+   darkMode()   
+  }
+
+</script>
+
+</body>
+</html>

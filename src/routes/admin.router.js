@@ -1,5 +1,5 @@
 import express from "express";
-import { admin_func } from "../setting/admin-app.js";
+import { admin_func } from "../controllers/admin.controller.js";
 export const admin_router = express.Router();
 import jwt, { decode } from "jsonwebtoken"; 
 admin_router.all('/', admin_func )
