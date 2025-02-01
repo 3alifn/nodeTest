@@ -2,15 +2,17 @@
   "name": "demo",
   "version": "1.0.0",
   "type": "module",
-  "main": "app.js",
+  "main": "./src/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "node ./src/app.js",
+    "css": "npx tailwindcss -i ./dist/input.css -o ./dist/output.css --watch"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@tailwindcss/postcss": "^4.0.1",
     "axios": "^1.7.8",
     "body-parser": "^1.20.3",
     "connect-redis": "^7.1.1",
@@ -26,5 +28,10 @@
     "nodemailer": "^6.9.16",
     "redis": "^4.7.0",
     "sjcl": "^1.0.8"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.5.1",
+    "tailwindcss": "^3.4.17"
   }
 }

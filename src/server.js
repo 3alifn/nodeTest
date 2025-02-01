@@ -10,15 +10,22 @@ import mysql from "mysql2";
 import session from 'express-session';
 import MySQLStore from 'express-mysql-session';
 import path from 'path';
-import { admin_router } from './route/admin-router.js';
+import { admin_router } from './routes/admin.router.js';
 const mysqSlqSession= MySQLStore(session)
 const app= express();
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
-app.use(cookieParser())
-app.use(express.json())
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(cookieParser());
+app.use(express.json());
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('./public'))
+app.set('view engine', 'ejs');
+import {fileURLToPath} from 'url';
+import {dirname} from 'path';
+const __filename= fileURLToPath(import.meta.url);
+const __dirname= dirname(__filename);
+app.set("views", path.join(__dirname, "./views"));
+app.use(express.static(path.join(__dirname, '/public/')))
 
 export const sqlmap= mysql.createPool({
     host: "localhost",
@@ -46,16 +53,14 @@ app.use(session({
 }))
 
 
-
-
 app.use('/admin', admin_router)
 
 app.get('/', (req, res)=>{
-res.sendFile(path.join(path.resolve(), 'index.html'));
+res.sendFile(path.join(__dirname, 'views/index.html'));
 })
 
-app.get('/test', (req, res)=>{
-    async function output(){
+app.get('/test', async (req, res)=>{
+ 
    
         function input(param){
             return new Promise((resolve, reject)=>{
@@ -66,9 +71,9 @@ app.get('/test', (req, res)=>{
         const log= await input('Hello World')
           res.end(log)
         
-    }
     
-    output()
+    
+  
 })
 
 app.use((err, req, res, next)=>{
